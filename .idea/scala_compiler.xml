@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="Maven 1" modules="spark-test,es,md5,curator-demo,canal2mysql,zookeeper-demo,demo-v0.1,kafka-demo,mapreduce-demo,elasticsearch-demo,tools-demo,spark-demo,javacode-demo,prometheus,jvm-demo,thread-demo,mybatis-demo,redis-demo,http-demo,hbase-demo" />
+  </component>
+</project>

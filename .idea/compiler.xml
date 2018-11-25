@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="curator-demo" />
+        <module name="elasticsearch-demo" />
+        <module name="es" />
+        <module name="hbase-demo" />
+        <module name="http-demo" />
+        <module name="javacode-demo" />
+        <module name="jvm-demo" />
+        <module name="kafka-demo" />
+        <module name="mail-demo" />
+        <module name="mapreduce-demo" />
+        <module name="md5" />
+        <module name="mybatis-demo" />
+        <module name="prometheus" />
+        <module name="redis-demo" />
+        <module name="spark-demo" />
+        <module name="spark-test" />
+        <module name="spring-boot-demo" />
+        <module name="spting-boot-demo" />
+        <module name="thread-demo" />
+        <module name="tools-demo" />
+        <module name="zookeeper-demo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="canal2mysql" target="1.8" />
+      <module name="curator-demo" target="1.8" />
+      <module name="demo-v0.1" target="1.8" />
+      <module name="elasticsearch-demo" target="1.8" />
+      <module name="es" target="1.8" />
+      <module name="hbase-demo" target="1.8" />
+      <module name="http-demo" target="1.8" />
+      <module name="javacode-demo" target="1.8" />
+      <module name="jvm-demo" target="1.8" />
+      <module name="kafka-demo" target="1.8" />
+      <module name="mail-demo" target="1.6" />
+      <module name="mapreduce-demo" target="1.8" />
+      <module name="md5" target="1.8" />
+      <module name="mybatis-demo" target="1.8" />
+      <module name="prometheus" target="1.8" />
+      <module name="redis-demo" target="1.8" />
+      <module name="spark-demo" target="1.8" />
+      <module name="spark-test" target="1.8" />
+      <module name="spring-boot-demo" target="1.6" />
+      <module name="spting-boot-demo" target="1.6" />
+      <module name="thread-demo" target="1.8" />
+      <module name="tools-demo" target="1.8" />
+      <module name="zookeeper-demo" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

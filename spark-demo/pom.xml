@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>demo-v0.1</artifactId>
+        <groupId>coding-demo</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spark-demo</artifactId>
+    <properties>
+        <applog.version>0.0.1.RELEASE</applog.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- <java.version>1.8</java.version> -->
+        <springboot.version>1.5.6.RELEASE</springboot.version>
+        <kafka-clients.version>0.10.0.1</kafka-clients.version>
+        <hbase-it.version>1.2.4</hbase-it.version>
+        <fastjson.version>1.2.7</fastjson.version>
+        <commons-pool2.version>2.0</commons-pool2.version>
+        <spring.version>4.3.14.RELEASE</spring.version>
+        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
+        <elasticsearch.version>5.3.2</elasticsearch.version>
+        <snakeyaml.version>1.17</snakeyaml.version>
+        <spark.version>2.1.0</spark.version>
+        <scala.version>2.11</scala.version>
+        <json4s.version>3.2.11</json4s.version>
+        <jedis.version>2.9.0</jedis.version>
+        <!-- <spring.version>4.3.10.RELEASE</spring.version> -->
+        <spring.version>4.3.16.RELEASE</spring.version>
+        <mybatis.version>3.2.3</mybatis.version>
+        <mybatis.spring.version>1.2.1</mybatis.spring.version>
+        <mysql-connector-java.version>5.1.28</mysql-connector-java.version>
+        <atomikos.version>3.9.0</atomikos.version>
+        <jta.version>1.1</jta.version>
+        <spring-boot.version>1.5.12.RELEASE</spring-boot.version>
+        <log4j2.version>2.7</log4j2.version>
+        <logback.version>1.1.11</logback.version>
+        <snakeyaml.version>1.17</snakeyaml.version>
+        <hibernate-validator.version>5.3.4.Final</hibernate-validator.version>
+        <javax-validation.version>1.1.0.Final</javax-validation.version>
+        <tomcat.version>8.5.11</tomcat.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_${scala.version}</artifactId>
+            <version>${spark.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.json4s</groupId>
+                    <artifactId>json4s-jackson_2.11</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-all</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-network-common_${scala.version}</artifactId>
+            <version>${spark.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-all</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--       <dependency>
+                  <groupId>org.apache.spark</groupId>
+                  <artifactId>spark-sql_${scala.version}</artifactId>
+                  <version>${spark.version}</version>
+              </dependency>
+              <dependency>
+                  <groupId>org.apache.spark</groupId>
+                  <artifactId>spark-hive_${scala.version}</artifactId>
+                  <version>${spark.version}</version>
+              </dependency> -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming_${scala.version}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-mllib_${scala.version}</artifactId>
+            <version>${spark.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>breeze_2.11</artifactId>
+                    <groupId>org.scalanlp</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-graphx_${scala.version}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>
+                spark-streaming-kafka_${scala.version}
+            </artifactId>
+            <version>1.6.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-compiler</artifactId>
+            <version>2.11.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.11.8</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json4s</groupId>
+            <artifactId>json4s-native_2.11</artifactId>
+            <version>${json4s.version}</version>
+        </dependency>
+        <!-- 	<dependency>
+              <groupId>org.json4s</groupId>
+              <artifactId>json4s-jackson_2.11</artifactId>
+              <version>${json4s.version}</version>
+            </dependency>  -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.7.4</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.5.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.6</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+            <classifier>jdk15</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.shangde.common</groupId>
+            <artifactId>sdf-common-util</artifactId>
+            <version>0.1.0.4-SKYNET-SNAPSHOT</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.6</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <scalaVersion>2.11.8</scalaVersion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>spark-demo</finalName>
+                            <artifactSet>
+                                <includes>
+                                    <include>org.springframework:spring-core</include>
+                                    <include>org.springframework:spring-context</include>
+                                    <include>org.springframework:spring-aop</include>
+                                    <include>org.springframework:spring-beans</include>
+                                    <include>org.springframework:spring-expression</include>
+                                    <include>org.springframework:spring-jdbc</include>
+                                    <include>org.springframework:spring-tx</include>
+
+                                    <include>com.atomikos:transactions-jdbc</include>
+                                    <include>com.atomikos:transactions-jta</include>
+                                    <include>com.atomikos:transactions-api</include>
+                                    <include>com.atomikos:transactions</include>
+                                    <include>com.atomikos:atomikos-util</include>
+                                    <include>javax.transaction:jta</include>
+
+                                    <include>mysql:mysql-connector-java</include>
+                                    <include>org.mybatis:mybatis</include>
+                                    <include>org.mybatis:mybatis-spring</include>
+
+                                    <include>org.aspectj:aspectjweaver</include>
+
+                                    <include>redis.clients:jedis</include>
+
+
+                                    <include>org.apache.kafka:kafka-clients</include>
+                                    <include>org.apache.commons:commons-pool2</include>
+
+                                    <include>org.scala-lang:scala-library</include>
+                                    <include>com.yammer.metrics:metrics-core</include>
+                                    <include>org.apache.kafka:kafka_2.11</include>
+                                    <include>org.apache.spark:spark-streaming_2.11</include>
+                                    <include>org.apache.spark:spark-streaming-kafka_2.11</include>
+
+                                    <include>org.apache.hbase:hbase-common</include>
+                                    <include>org.apache.hbase:hbase-annotations</include>
+                                    <include>org.apache.hbase:hbase-protocol</include>
+                                    <include>org.apache.hbase:hbase-codec</include>
+                                    <include>org.apache.hbase:hbase-client</include>
+
+
+                                    <include>com.alibaba:fastjson</include>
+                                    <include>org.yaml:snakeyaml</include>
+                                    <include>com.tdunning:t-digest</include>
+                                    <include>org.hdrhistogram:HdrHistogram</include>
+                                    <include>org.locationtech.spatial4j:spatial4j</include>
+                                    <include>com.vividsolutions:jts</include>
+                                    <include>org.hdrhistogram:HdrHistogram</include>
+
+                                    <include>org.apache.logging.log4j:log4j-api</include>
+                                    <include>org.apache.logging.log4j:log4j-core</include>
+                                    <include>org.apache.logging.log4j:log4j-1.2-api</include>
+
+                                    <include>org.apache.lucene:lucene-core</include>
+                                    <include>org.apache.lucene:lucene-analyzers-common</include>
+                                    <include>org.apache.lucene:lucene-backward-codecs</include>
+                                    <include>org.apache.lucene:lucene-grouping</include>
+                                    <include>org.apache.lucene:lucene-highlighter</include>
+                                    <include>org.apache.lucene:lucene-join</include>
+                                    <include>org.apache.lucene:lucene-memory</include>
+                                    <include>org.apache.lucene:lucene-misc</include>
+                                    <include>org.apache.lucene:lucene-queries</include>
+                                    <include>org.apache.lucene:lucene-queryparser</include>
+                                    <include>org.apache.lucene:lucene-sandbox</include>
+                                    <include>org.apache.lucene:lucene-spatial</include>
+                                    <include>org.apache.lucene:lucene-spatial-extras</include>
+                                    <include>org.apache.lucene:lucene-spatial3d</include>
+                                    <include>org.apache.lucene:lucene-suggest</include>
+
+                                    <include>org.elasticsearch:elasticsearch</include>
+
+                                    <include>com.carrotsearch:hppc</include>
+                                    <include>com.carrotsearch:hppc-template-processor</include>
+
+                                    <include>org.elasticsearch.plugin:transport-netty3-client</include>
+                                    <include>org.elasticsearch.plugin:transport-netty4-client</include>
+                                    <include>org.elasticsearch.plugin:reindex-client</include>
+                                    <include>org.elasticsearch.plugin:lang-mustache-client</include>
+                                    <include>org.elasticsearch.plugin:percolator-client</include>
+                                    <include>org.elasticsearch.client:transport</include>
+                                </includes>
+                            </artifactSet>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/spring.handlers</resource>
+                                </transformer>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/spring.schemas</resource>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+    <packaging>jar</packaging>
+</project>

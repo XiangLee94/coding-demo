@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"  
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+	http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<description>鹰眼数据源配置</description>
+	
+	
+	<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer"  
+	    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+		<property name="location" value="classpath:application.properties" /> 
+	</bean>
+		
+		
+	
+	<!-- ent数据库 -->
+	<bean id="dataSource_ent" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}"/>  
+		<property name="url" value="${db.ent.dbUrl}"/>  
+		<property name="username" value="${db.ent.userName}"/>  
+		<property name="password" value="${db.ent.passWord}"/>
+		<!-- 初始化连接大小 -->  
+		<property name="initialSize" value="${db.minPoolSize}"></property>  
+		<!-- 连接池最大数量 -->  
+		<property name="maxActive" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最大空闲 -->  
+		<property name="maxIdle" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最小空闲 -->  
+		<property name="minIdle" value="0"></property>  
+		<!-- 获取连接最大等待时间 单位毫秒 -->  
+		<property name="maxWait" value="${db.borrowConnectionTimeout}"></property> 
+		<!-- 验证链接sql语句 -->
+		<property name="validationQuery" value="${db.testQuery}" />
+		<!-- 保持链接的最长时间 单位秒 -->  
+		<property name="removeAbandonedTimeout" value="${db.maintenanceInterval}" />
+	</bean>
+		
+	<bean id="transactionManager_ent" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_ent"></property>
+	</bean>	
+	
+	<bean id="sqlSessionFactory_ent" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_ent"></property>
+		<property name="configLocation" value="classpath:/mybatis_cube.xml"></property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.sunlands.eagle.dao.*.ent"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_ent"></property>
+	</bean>	
+		
+
+	<!-- social数据库 -->
+	<bean id="dataSource_social" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}"/>  
+		<property name="url" value="${db.social.dbUrl}"/>  
+		<property name="username" value="${db.social.userName}"/>  
+		<property name="password" value="${db.social.passWord}"/>
+		<!-- 初始化连接大小 -->  
+		<property name="initialSize" value="${db.minPoolSize}"></property>  
+		<!-- 连接池最大数量 -->  
+		<property name="maxActive" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最大空闲 -->  
+		<property name="maxIdle" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最小空闲 -->  
+		<property name="minIdle" value="0"></property>  
+		<!-- 获取连接最大等待时间 单位毫秒 -->  
+		<property name="maxWait" value="${db.borrowConnectionTimeout}"></property> 
+		<!-- 验证链接sql语句 -->
+		<property name="validationQuery" value="${db.testQuery}" />
+		<!-- 保持链接的最长时间 单位秒 -->  
+		<property name="removeAbandonedTimeout" value="${db.maintenanceInterval}" />
+	</bean>
+	
+	<bean id="transactionManager_social" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_social"></property>
+	</bean>	
+	
+	<tx:annotation-driven transaction-manager="transactionManager_social" />
+	
+	<bean id="sqlSessionFactory_social" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_social"></property>
+		<property name="configLocation" value="classpath:/mybatis_cube.xml"></property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.sunlands.eagle.dao.*.social"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_social"></property>
+	</bean>	
+	
+	
+	
+	<!-- ods数据库 -->
+	<bean id="dataSource_ods" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}"/>  
+		<property name="url" value="${db.ods.dbUrl}"/>  
+		<property name="username" value="${db.ods.userName}"/>  
+		<property name="password" value="${db.ods.passWord}"/>
+		<!-- 初始化连接大小 -->  
+		<property name="initialSize" value="${db.minPoolSize}"></property>  
+		<!-- 连接池最大数量 -->  
+		<property name="maxActive" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最大空闲 -->  
+		<property name="maxIdle" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最小空闲 -->  
+		<property name="minIdle" value="0"></property>  
+		<!-- 获取连接最大等待时间 单位毫秒 -->  
+		<property name="maxWait" value="${db.borrowConnectionTimeout}"></property> 
+		<!-- 验证链接sql语句 -->
+		<property name="validationQuery" value="${db.testQuery}" />
+		<!-- 保持链接的最长时间 单位秒 -->  
+		<property name="removeAbandonedTimeout" value="${db.maintenanceInterval}" />
+	</bean>
+		
+	<bean id="transactionManager_ods" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_ods"></property>
+	</bean>	
+	
+	<bean id="sqlSessionFactory_ods" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_ods"></property>
+		<property name="configLocation" value="classpath:/mybatis_cube.xml"></property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.sunlands.eagle.dao.*.ods"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_ods"></property>
+	</bean>	
+		
+	<!-- exercise数据库 -->
+	<bean id="dataSource_exercise" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}"/>  
+		<property name="url" value="${db.exercise.dbUrl}"/>  
+		<property name="username" value="${db.exercise.userName}"/>  
+		<property name="password" value="${db.exercise.passWord}"/>
+		<!-- 初始化连接大小 -->  
+		<property name="initialSize" value="${db.minPoolSize}"></property>  
+		<!-- 连接池最大数量 -->  
+		<property name="maxActive" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最大空闲 -->  
+		<property name="maxIdle" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最小空闲 -->  
+		<property name="minIdle" value="0"></property>  
+		<!-- 获取连接最大等待时间 单位毫秒 -->  
+		<property name="maxWait" value="${db.borrowConnectionTimeout}"></property> 
+		<!-- 验证链接sql语句 -->
+		<property name="validationQuery" value="${db.testQuery}" />
+		<!-- 保持链接的最长时间 单位秒 -->  
+		<property name="removeAbandonedTimeout" value="${db.maintenanceInterval}" />
+	</bean>
+	
+	<bean id="transactionManager_exercise" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_exercise"></property>
+	</bean>	
+	
+	<tx:annotation-driven transaction-manager="transactionManager_exercise" />
+	
+	<bean id="sqlSessionFactory_exercise" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_exercise"></property>
+		<property name="configLocation" value="classpath:/mybatis_cube.xml"></property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.sunlands.eagle.dao.*.exercise"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_exercise"></property>
+	</bean>	
+	
+	<!-- callCenter数据库 -->
+	<bean id="dataSource_callCenter" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}"/>  
+		<property name="url" value="${db.callCenter.dbUrl}"/>  
+		<property name="username" value="${db.callCenter.userName}"/>  
+		<property name="password" value="${db.callCenter.passWord}"/>
+		<!-- 初始化连接大小 -->  
+		<property name="initialSize" value="${db.minPoolSize}"></property>  
+		<!-- 连接池最大数量 -->  
+		<property name="maxActive" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最大空闲 -->  
+		<property name="maxIdle" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最小空闲 -->  
+		<property name="minIdle" value="0"></property>  
+		<!-- 获取连接最大等待时间 单位毫秒 -->  
+		<property name="maxWait" value="${db.borrowConnectionTimeout}"></property> 
+		<!-- 验证链接sql语句 -->
+		<property name="validationQuery" value="${db.testQuery}" />
+		<!-- 保持链接的最长时间 单位秒 -->  
+		<property name="removeAbandonedTimeout" value="${db.maintenanceInterval}" />
+	</bean>
+	
+	<bean id="transactionManager_callCenter" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_callCenter"></property>
+	</bean>	
+	
+	<bean id="sqlSessionFactory_callCenter" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_callCenter"></property>
+		<property name="configLocation" value="classpath:/mybatis_cube.xml"></property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.sunlands.eagle.dao.*.callCenter"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_callCenter"></property>
+	</bean>	
+	
+	<!-- refund 退费数据库 202 产品库 -->
+	<bean id="dataSource_refund" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}"/>  
+		<property name="url" value="${db.refund.dbUrl}"/>  
+		<property name="username" value="${db.refund.userName}"/>  
+		<property name="password" value="${db.refund.passWord}"/>
+		<!-- 初始化连接大小 -->  
+		<property name="initialSize" value="${db.minPoolSize}"></property>  
+		<!-- 连接池最大数量 -->  
+		<property name="maxActive" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最大空闲 -->  
+		<property name="maxIdle" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最小空闲 -->  
+		<property name="minIdle" value="0"></property>  
+		<!-- 获取连接最大等待时间 单位毫秒 -->  
+		<property name="maxWait" value="${db.borrowConnectionTimeout}"></property> 
+		<!-- 验证链接sql语句 -->
+		<property name="validationQuery" value="${db.testQuery}" />
+		<!-- 保持链接的最长时间 单位秒 -->  
+		<property name="removeAbandonedTimeout" value="${db.maintenanceInterval}" />
+	</bean>
+	
+	<bean id="transactionManager_refund" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_refund"></property>
+	</bean>	
+	
+	<bean id="sqlSessionFactory_refund" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_refund"></property>
+		<property name="configLocation" value="classpath:/mybatis_cube.xml"></property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.sunlands.eagle.dao.*.refund"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_refund"></property>
+	</bean>	
+	
+	<!-- dragnet 新天网171 产品库 -->
+	<bean id="dataSource_dragnet" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}"/>  
+		<property name="url" value="${db.dragnet.dbUrl}"/>  
+		<property name="username" value="${db.dragnet.userName}"/>  
+		<property name="password" value="${db.dragnet.passWord}"/>
+		<!-- 初始化连接大小 -->  
+		<property name="initialSize" value="${db.minPoolSize}"></property>  
+		<!-- 连接池最大数量 -->  
+		<property name="maxActive" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最大空闲 -->  
+		<property name="maxIdle" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最小空闲 -->  
+		<property name="minIdle" value="0"></property>  
+		<!-- 获取连接最大等待时间 单位毫秒 -->  
+		<property name="maxWait" value="${db.borrowConnectionTimeout}"></property> 
+		<!-- 验证链接sql语句 -->
+		<property name="validationQuery" value="${db.testQuery}" />
+		<!-- 保持链接的最长时间 单位秒 -->  
+		<property name="removeAbandonedTimeout" value="${db.maintenanceInterval}" />
+	</bean>
+	
+	<bean id="transactionManager_dragnet" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_dragnet"></property>
+	</bean>	
+	
+	<bean id="sqlSessionFactory_dragnet" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_dragnet"></property>
+		<property name="configLocation" value="classpath:/mybatis_cube.xml"></property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.sunlands.eagle.dao.*.dragnet"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_dragnet"></property>
+	</bean>	
+	
+	<!-- tiku 171 产品库 -->
+	<bean id="dataSource_tiku" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}"/>  
+		<property name="url" value="${db.tiku.dbUrl}"/>  
+		<property name="username" value="${db.tiku.userName}"/>  
+		<property name="password" value="${db.tiku.passWord}"/>
+		<!-- 初始化连接大小 -->  
+		<property name="initialSize" value="${db.minPoolSize}"></property>  
+		<!-- 连接池最大数量 -->  
+		<property name="maxActive" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最大空闲 -->  
+		<property name="maxIdle" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最小空闲 -->  
+		<property name="minIdle" value="0"></property>  
+		<!-- 获取连接最大等待时间 单位毫秒 -->  
+		<property name="maxWait" value="${db.borrowConnectionTimeout}"></property> 
+		<!-- 验证链接sql语句 -->
+		<property name="validationQuery" value="${db.testQuery}" />
+		<!-- 保持链接的最长时间 单位秒 -->  
+		<property name="removeAbandonedTimeout" value="${db.maintenanceInterval}" />
+	</bean>
+	
+	<bean id="transactionManager_tiku" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_tiku"></property>
+	</bean>	
+	
+	<bean id="sqlSessionFactory_tiku" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_tiku"></property>
+		<property name="configLocation" value="classpath:/mybatis_cube.xml"></property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.sunlands.eagle.dao.*.tiku"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_tiku"></property>
+	</bean>	
+	
+	<!-- workorder 171 产品库 -->
+	<bean id="dataSource_workorder" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}"/>  
+		<property name="url" value="${db.workorder.dbUrl}"/>  
+		<property name="username" value="${db.workorder.userName}"/>  
+		<property name="password" value="${db.workorder.passWord}"/>
+		<!-- 初始化连接大小 -->  
+		<property name="initialSize" value="${db.minPoolSize}"></property>  
+		<!-- 连接池最大数量 -->  
+		<property name="maxActive" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最大空闲 -->  
+		<property name="maxIdle" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最小空闲 -->  
+		<property name="minIdle" value="0"></property>  
+		<!-- 获取连接最大等待时间 单位毫秒 -->  
+		<property name="maxWait" value="${db.borrowConnectionTimeout}"></property> 
+		<!-- 验证链接sql语句 -->
+		<property name="validationQuery" value="${db.testQuery}" />
+		<!-- 保持链接的最长时间 单位秒 -->  
+		<property name="removeAbandonedTimeout" value="${db.maintenanceInterval}" />
+	</bean>
+	
+	<bean id="transactionManager_workorder" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_workorder"></property>
+	</bean>	
+	
+	<bean id="sqlSessionFactory_workorder" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_workorder"></property>
+		<property name="configLocation" value="classpath:/mybatis_cube.xml"></property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.sunlands.eagle.dao.*.workorder"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_workorder"></property>
+	</bean>	
+	
+	
+	<!-- im 171 产品库 -->
+	<bean id="dataSource_im" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${db.driverClassName}"/>  
+		<property name="url" value="${db.im.dbUrl}"/>  
+		<property name="username" value="${db.im.userName}"/>  
+		<property name="password" value="${db.im.passWord}"/>
+		<!-- 初始化连接大小 -->  
+		<property name="initialSize" value="${db.minPoolSize}"></property>  
+		<!-- 连接池最大数量 -->  
+		<property name="maxActive" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最大空闲 -->  
+		<property name="maxIdle" value="${db.maxPoolSize}"></property>  
+		<!-- 连接池最小空闲 -->  
+		<property name="minIdle" value="0"></property>  
+		<!-- 获取连接最大等待时间 单位毫秒 -->  
+		<property name="maxWait" value="${db.borrowConnectionTimeout}"></property> 
+		<!-- 验证链接sql语句 -->
+		<property name="validationQuery" value="${db.testQuery}" />
+		<!-- 保持链接的最长时间 单位秒 -->  
+		<property name="removeAbandonedTimeout" value="${db.maintenanceInterval}" />
+	</bean>
+	
+	<bean id="transactionManager_im" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_im"></property>
+	</bean>	
+	
+	<bean id="sqlSessionFactory_im" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_im"></property>
+		<property name="configLocation" value="classpath:/mybatis_cube.xml"></property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.sunlands.eagle.dao.*.im"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_im"></property>
+	</bean>	
+	
+	
+</beans>

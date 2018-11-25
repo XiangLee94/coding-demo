@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/demo-v0.1.iml" filepath="$PROJECT_DIR$/demo-v0.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/elasticsearch-demo/elasticsearch-demo.iml" filepath="$PROJECT_DIR$/elasticsearch-demo/elasticsearch-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbase-demo/hbase-demo.iml" filepath="$PROJECT_DIR$/hbase-demo/hbase-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/http-demo/http-demo.iml" filepath="$PROJECT_DIR$/http-demo/http-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javacode-demo/javacode-demo.iml" filepath="$PROJECT_DIR$/javacode-demo/javacode-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jvm-demo/jvm-demo.iml" filepath="$PROJECT_DIR$/jvm-demo/jvm-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kafka-demo/kafka-demo.iml" filepath="$PROJECT_DIR$/kafka-demo/kafka-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mail-demo/mail-demo.iml" filepath="$PROJECT_DIR$/mail-demo/mail-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mapreduce-demo/mapreduce-demo.iml" filepath="$PROJECT_DIR$/mapreduce-demo/mapreduce-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-demo/mybatis-demo.iml" filepath="$PROJECT_DIR$/mybatis-demo/mybatis-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/prometheus/prometheus.iml" filepath="$PROJECT_DIR$/prometheus/prometheus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/redis-demo/redis-demo.iml" filepath="$PROJECT_DIR$/redis-demo/redis-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spark-demo/spark-demo.iml" filepath="$PROJECT_DIR$/spark-demo/spark-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-demo/spring-boot-demo.iml" filepath="$PROJECT_DIR$/spring-boot-demo/spring-boot-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/thread-demo/thread-demo.iml" filepath="$PROJECT_DIR$/thread-demo/thread-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tools-demo/tools-demo.iml" filepath="$PROJECT_DIR$/tools-demo/tools-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zookeeper-demo/zookeeper-demo.iml" filepath="$PROJECT_DIR$/zookeeper-demo/zookeeper-demo.iml" />
+    </modules>
+  </component>
+</project>
