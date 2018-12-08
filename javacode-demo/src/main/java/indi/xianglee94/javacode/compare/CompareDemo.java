@@ -1,4 +1,4 @@
-package com.lee.compare;
+package indi.xianglee94.javacode.compare;
 
 import java.util.ArrayList;
 import java.util.Collections;

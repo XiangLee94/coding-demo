@@ -1,4 +1,4 @@
-package com.lee;
+package indi.xianglee94.javacode.java8.streamdemo;
 
 import java.util.ArrayList;
 import java.util.Date;
