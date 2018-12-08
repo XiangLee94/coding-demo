@@ -1,0 +1,51 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.gitignore
+.idea/
+elasticsearch-demo/elasticsearch-demo.iml
+elasticsearch-demo/target/
+hbase-demo/hbase-demo.iml
+http-demo/http-demo.iml
+javacode-demo/javacode-demo.iml
+jvm-demo/jvm-demo.iml
+kafka-demo/kafka-demo.iml
+mapreduce-demo/mapreduce-demo.iml
+mybatis-demo/mybatis-demo.iml
+prometheus/prometheus.iml
+redis-demo/redis-demo.iml
+spark-demo/spark-demo.iml
+spring-boot-demo/spring-boot-demo.iml
+thread-demo/thread-demo.iml
+tools-demo/tools-demo.iml
+zookeeper-demo/zookeeper-demo.iml
