@@ -21,96 +21,60 @@
  */
 -->
 <configuration>
-	<property>
+	<property>	
 		<name>hbase.rootdir</name>
-		<value>hdfs://192.168.0.80:9000/hbase</value>
+		<value>hdfs://hadoopcluster/hbase</value>
 	</property>
+	<property>	
+		<name>hbase.master.port</name>
+		<value>60000</value>
+	</property>
+    	<property>
+       		 <name>hbase.cluster.distributed</name>
+        	<value>true</value>
+    	</property>
+    	<property>
+        	<name>hbase.tmp.dir</name>
+        <value>/data/soft/hbase-1.2.5/tmp</value>
+        </property>
+     	<property>
+        	<name>hbase.zookeeper.property.clientPort</name>
+       		<value>2181</value>
+    	</property>
+   	<property>
+        	<name>hbase.zookeeper.quorum</name>
+       		<value>eagle67,eagle68,eagle55,eagle56,eagle57</value>
+    	</property>
+    	<property>
+        	<name>hbase.zookeeper.property.dataDir</name>
+        	<value>/data/soft/zookeeper-3.4.10/data</value>
+    	</property>
+    	<property>
+        	<name>zookeeper.session.timeout</name>
+       		<value>1200000</value>
+    	</property>
+        <property>
+                <name>hbase.zookeeper.property.tickTime</name>
+                <value>6000</value>
+        </property>
 	<property>
-		<name>hbase.master</name>
-		<value>hdfs://192.168.0.80:60000</value>
-	</property>
-	<property>
-		<name>dfs.replication</name>
-		<value>1</value>
-	</property>
-	<property>
-		<name>hbase.cluster.distributed</name>
-		<value>true</value>
-	</property>
-	<property>
-		<name>hbase.tmp.dir</name>
-		<value>/data/soft/hbase-1.2.5/tmp</value>
-	</property>
-	<property>
-		<name>hbase.zookeeper.property.clientPort</name>
-		<value>2181</value>
-	</property>
-	<property>
-		<name>hbase.zookeeper.quorum</name>
-		<value>192.168.0.80</value>
-	</property>
-	<property>
-		<name>hbase.zoopkeeper.property.dataDir</name>
-		<value>/data/soft/hbase-1.2.5/data</value>
-	</property>
-	<property>
-		<name>zookeeper.session.timeout</name>
-		<value>1200000</value>
-	</property>
-	<property>
-		<name>hbase.coprocessor.abortonerror</name>
-		<value>false</value>
-	</property>
-        <!--property>
+        	<name>hbase.coprocessor.abortonerror</name>
+       		<value>false</value>
+    	</property>
+        <property>
                 <name>hbase.regionserver.wal.codec</name>
                 <value>org.apache.hadoop.hbase.regionserver.wal.IndexedWALEditCodec</value>
-        </property-->
+        </property>
 	<property>
         	<name>hbase.regionserver.restart.on.zk.expire</name>
        		<value>true</value>
     	</property>
-<!--这两项超时设置需要与hdfs的一致否则会出现问题-->
   	<property>
     		<name>dfs.datanode.socket.write.timeout</name>
-    		<value>900000</value>
+    		<value>300000</value>
   	</property>
   	<property>
     		<name>dfs.socket.timeout</name>
-    		<value>900000</value>
+    		<value>300000</value>
   	</property>
-<!--regionserver请求处理IO的线程数 defult 7-->
-        <property>
-                <name>hbase.reginoserver.handler.count</name>
-                <value>300</value>
-        </property>
-<!--storefile compaction的文件数，deflult 10 -->
-        <property>
-                <name>hbase.hstore.blockingStoreFiles</name>
-                <value>100</value>
-        </property>
-<!--减少因为内存碎片导致的Full GC -->
-        <property>
-                <name>hbase.hregion.memstore.mslab.enabled</name>
-                <value>true</value>
-        </property>
-<!-- 是否超过了memstore默认大小的8倍(默认为4)，如果超过了则锁住memstore不让新写请求进来并触发flush，避免产生OOM -->
-        <property>
-                <name>hbase.hregion.memstore.block.multiplier</name>
-                <value>4</value>
-        </property>
-<!-- regionserver会睡眠10s再检查memstore是不是低于阀值 -->
-        <property>
-                <name>hbase.server.thread.wakefrequency</name>
-                <value>100</value>
-        </property>
-<!-- scan 超时 -->
-        <property>
-                <name>hbase.client.scanner.timeout.period</name>
-                <value>300000</value>
-        </property>
-<!-- rpc请求超时时间 -->
-        <property>
-                <name>hbase.rpc.timeout</name>
-                <value>300000</value>
-        </property>
 </configuration>

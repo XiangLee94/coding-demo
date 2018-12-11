@@ -48,37 +48,37 @@
   <!-- 配置nn1,nn2的rpc通信端口 -->
     <property>
     	<name>dfs.namenode.rpc-address.hadoopcluster.nn1</name>
-    	<value>192.168.0.80:9000</value>
+    	<value>eagle67:9000</value>
     </property>
     <property>
     	<name>dfs.namenode.rpc-address.hadoopcluster.nn2</name>
-    	<value>192.168.2.139:9000</value>
+    	<value>eagle68:9000</value>
     </property>
 
   <!-- 配置nn1,nn2的http通信端口 -->
     <property>
     	<name>dfs.namenode.http-address.hadoopcluster.nn1</name>
-    	<value>192.168.0.80:50070</value>
+    	<value>eagle67:50070</value>
     </property>
     <property>
     	<name>dfs.namenode.http-address.hadoopcluster.nn2</name>
-    	<value>192.168.2.139:50070</value>
+    	<value>eagle68:50070</value>
     </property>
 
     <property>
     	<name>dfs.namenode.servicerpc-address.hadoopcluster.nn1</name>
-    	<value>192.168.0.80:53310</value>
+    	<value>eagle67:53310</value>
     </property>
     <property>
     	<name>dfs.namenode.servicerpc-address.hadoopcluster.nn2</name>
-    	<value>192.168.2.139:53310</value>
+    	<value>eagle68:53310</value>
     </property>
 
 
   <!-- 指定namenode元数据存储在journalnode中的路径 -->
     <property>
     	<name>dfs.namenode.shared.edits.dir</name>
-    	<value>qjournal://192.168.0.80:8485;192.168.2.139:8485/hadoopcluster</value>
+    	<value>qjournal://eagle55:8485;eagle56:8485;eagle57:8485/hadoopcluster</value>
     </property>
   
   <!-- 指定journalnode日志文件存储的路径 -->
@@ -130,19 +130,11 @@
 
   <property>
     <name>dfs.datanode.socket.write.timeout</name>
-    <value>900000</value>
+    <value>300000</value>
   </property>
   <property>
     <name>dfs.socket.timeout</name>
-    <value>900000</value>
-  </property>
-  <property>
-    <name>dfs.datanode.handler.count</name>
-    <value>30</value>
-  </property>
-  <property>
-    <name>dfs.namenode.handler.count</name>
-    <value>60</value>
+    <value>300000</value>
   </property>
 
    <property>
@@ -157,6 +149,6 @@
   <!-- datanode间传输block的最大线程数 -->
   <property>
     <name>dfs.datanode.max.transfer.threads</name>
-    <value>24576</value>
+    <value>16384</value>
   </property>
 </configuration>
