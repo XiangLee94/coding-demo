@@ -6,7 +6,10 @@ import java.util.HashSet;
 public class Test {
     public static void main(String[] args) {
 
-        testContainsAll();
+
+        String label = "a=";
+        String[] labelArr = label.split("=");
+        System.out.println("");
     }
 
     private static void testSwitch() {
@@ -27,6 +30,7 @@ public class Test {
             default:
                 System.out.println("nothing");
         }
+
     }
 
 
