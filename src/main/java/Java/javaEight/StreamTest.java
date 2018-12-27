@@ -1,41 +1,98 @@
 package Java.javaEight;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class StreamTest {
     public static void main(String[] args) {
+        System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "4");
 
-        Trader liu = new Trader("Lau", "Beijing");
-        Trader lee = new Trader("Lee", "Shanghai");
-        Trader zhang = new Trader("Zhang", "Guangzhou");
-        Trader wang = new Trader("Wang", "Beijing");
+//        Trader liu = new Trader("Lau", "Beijing");
+//        Trader lee = new Trader("Lee", "Shanghai");
+//        Trader zhang = new Trader("Zhang", "Guangzhou");
+//        Trader wang = new Trader("Wang", "Beijing");
+//
+//        List<Transaction> transactions = Arrays.asList(
+//                new Transaction(liu, 2016, 300),
+//                new Transaction(lee, 2015, 100),
+//                new Transaction(lee, 2016, 500),
+//                new Transaction(zhang, 2016, 9000),
+//                new Transaction(wang, 2017, 1000),
+//                new Transaction(liu, 2016, 1500)
+//        );
+//
+//        List<Transaction> list = transactions.stream().filter(i -> i.getYear() == 2016).sorted((i1, i2) -> i1.getValue() == i2.getValue() ? 0 : (i1.getValue() > i2.getValue() ? -1 : 1)).collect(Collectors.toList());
+//        List<String> citys = transactions.stream().map(i -> i.getTrader()).map(i -> i.getCity()).distinct().collect(Collectors.toList());
+//        List<String> names = transactions.stream().map(Transaction::getTrader).map(Trader::getName).sorted().distinct().collect(Collectors.toList());
+//        boolean b = !transactions.stream().map(Transaction::getTrader).map(i -> {
+//            citys.add(i.getCity());
+//            return i.getCity();
+//        }).filter(i -> i.equals("Guangzhou")).collect(Collectors.toList()).isEmpty();
+//        String a = transactions.stream().map(Transaction::getTrader).map(Trader::getCity).reduce((i, j) -> j).get();
+//
+//
+//        System.out.println(a);
+//        names.forEach(System.out::println);
+//        // citys.forEach(System.out::println);
+//        // list.forEach(System.out::println);
 
-        List<Transaction> transactions = Arrays.asList(
-                new Transaction(liu, 2016, 300),
-                new Transaction(lee, 2015, 100),
-                new Transaction(lee, 2016, 500),
-                new Transaction(zhang, 2016, 9000),
-                new Transaction(wang, 2017, 1000),
-                new Transaction(liu, 2016, 1500)
-        );
+        Person p = new Person("A");
+        Person p1 = new Person("B");
+        Person p2 = new Person("C");
+        Person p3 = new Person("D");
 
-        List<Transaction> list = transactions.stream().filter(i -> i.getYear() == 2016).sorted((i1, i2) -> i1.getValue() == i2.getValue() ? 0 : (i1.getValue() > i2.getValue() ? -1 : 1)).collect(Collectors.toList());
-        List<String> citys = transactions.stream().map(i -> i.getTrader()).map(i -> i.getCity()).distinct().collect(Collectors.toList());
-        List<String> names = transactions.stream().map(Transaction::getTrader).map(Trader::getName).sorted().distinct().collect(Collectors.toList());
-        boolean b = !transactions.stream().map(Transaction::getTrader).map(i -> {
-            citys.add(i.getCity());
-            return i.getCity();
-        }).filter(i -> i.equals("Guangzhou")).collect(Collectors.toList()).isEmpty();
-        String a = transactions.stream().map(Transaction::getTrader).map(Trader::getCity).reduce((i, j) -> j).get();
+        List<Person> people = new ArrayList<>();
+        people.add(p);
+        people.add(p1);
+        people.add(p2);
+        people.add(p3);
+
+        Peoples people1 = new Peoples(people);
+
+        for (Person person : people1){
+
+        }
+
+        people.stream().forEach(i->{
+            i.sleep();
+            System.out.println(i.name + "sleep");
+        });
+
+        System.out.println("all done");
 
 
-        System.out.println(a);
-        names.forEach(System.out::println);
-        // citys.forEach(System.out::println);
-        // list.forEach(System.out::println);
 
+    }
+}
+
+class Person{
+    String name;
+    public void sleep(){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Person(String name) {
+        this.name = name;
+    }
+}
+class Peoples implements  Iterable<Person>{
+    private List<Person> persons;
+
+    public Peoples(List<Person> persons) {
+        this.persons = persons;
+    }
+
+    @Override
+    public Iterator<Person> iterator() {
+        return persons.iterator();
     }
 }
 

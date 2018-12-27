@@ -12,26 +12,26 @@ public class Test {
         System.out.println("");
     }
 
-    private static void testSwitch() {
-        String str = "dsa";
-        switch (str) {
-            case "nihao":
-                System.out.println("nihao");
-                break;
-            case "buhao":
-                System.out.println("buhao");
-                break;
-            case "shenme":
-                System.out.println("shenme");
-                break;
-            case "nima":
-                System.out.println("nima");
-                System.out.println("nima");
-            default:
-                System.out.println("nothing");
-        }
-
-    }
+//    private static void testSwitch() {
+//        String str = "dsa";
+//        switch (str) {
+//            case "nihao":
+//                System.out.println("nihao");
+//                break;
+//            case "buhao":
+//                System.out.println("buhao");
+//                break;
+//            case "shenme":
+//                System.out.println("shenme");
+//                break;
+//            case "nima":
+//                System.out.println("nima");
+//                System.out.println("nima");
+//            default:
+//                System.out.println("nothing");
+//        }
+//
+//    }
 
 
     private static void testContainsAll(){

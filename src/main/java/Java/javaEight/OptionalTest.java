@@ -7,10 +7,19 @@ public class OptionalTest {
     public static void main(String[] args) {
         Order o =new Order();
         User ou = new User();
-        ou.setName("shabi");
+//        ou.setName("shabi");
         o.setUser(ou);
         User u = new User();
-        Optional.ofNullable(o).map(i->i.getUser()).map(i->i.getName()).map(i->i.toUpperCase()).ifPresent(i->u.setName(i));
+        u.setName("nihao");
+        Optional.ofNullable(o).map(Order::getUser).map(rdd->rdd.getName()).map(String::toUpperCase).ifPresent(i->u.setName(i));
+        if(u!=null){
+            if(o.getUser() != null){
+                if(o.getUser().getName() != null){
+
+                }
+            }
+        }
+        u.setName(o.getUser().getName().toUpperCase());
         System.out.println(u.getName());
     }
 }

@@ -29,9 +29,9 @@ import org.elasticsearch.search.sort.SortOrder;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
 public class EsDAO {
-    private String clusterName = "ElasticSearchETL_test_80";
+    private String clusterName = "ElasticSearchETL";
     // ElasticSearch的host
-    private String nodeHost = "192.168.0.80";
+    private String nodeHost = "192.168.0.251";
     // ElasticSearch的端口（Java API用的是Transport端口，也就是TCP）
     private int nodePort = 9300;
     private TransportClient client = null;
@@ -103,7 +103,7 @@ public class EsDAO {
 
     public static void main(String[] args) {
         EsDAO esutil = new EsDAO();
-        esutil.getWebEventLog();
+        esutil.get5();
     }
 
     public String get() {
@@ -205,10 +205,11 @@ public class EsDAO {
         SearchRequestBuilder r = client.prepareSearch("f_mid_order_details");
         r.setFetchSource(orderFetch, null);
         boolQuery.filter(QueryBuilders.termQuery("cf.delete_flag.raw", 0));
-//        boolQuery.must(QueryBuilders.boolQuery().should(QueryBuilders.termQuery("cf.call_business_id.raw", "")).should(QueryBuilders.boolQuery().mustNot(QueryBuilders.existsQuery("cf.call_business_id.raw"))));
-        //boolQuery.should(QueryBuilders.boolQuery().mustNot(QueryBuilders.existsQuery("cf.call_business_id.raw")));
-        boolQuery.filter(QueryBuilders.rangeQuery("cf.payment_time").gte("2018-09-01 00:00:00").lt("2018-10-03 00:00:00"));
-        boolQuery.filter(QueryBuilders.termsQuery("cf.status_code.raw", STATUS_CODE));
+        boolQuery.must(
+                QueryBuilders.boolQuery().should(QueryBuilders.termQuery("cf.call_business_id.raw", "")).should(QueryBuilders.boolQuery().mustNot(QueryBuilders.existsQuery("cf.call_business_id.raw"))));
+//        boolQuery.should(QueryBuilders.boolQuery().mustNot(QueryBuilders.existsQuery("cf.call_business_id.raw")));
+        boolQuery.filter(QueryBuilders.rangeQuery("cf.payment_time").gte("2018-09-01 00:00:00").lte("2018-10-03 00:00:00"));
+//        boolQuery.filter(QueryBuilders.termsQuery("cf.status_code.raw", STATUS_CODE));
         r.setQuery(boolQuery).setSize(10000);
         r.setScroll(new TimeValue(5L, TimeUnit.SECONDS));
         SearchResponse s = r.get();
@@ -458,7 +459,7 @@ public class EsDAO {
         SearchRequestBuilder r = client.prepareSearch("f_mid_order_details");
         r.setFetchSource(busiFetch, null);
         boolQuery.filter(QueryBuilders.termQuery("cf.delete_flag.raw", 0));
-//        boolQuery.filter(QueryBuilders.existsQuery("cf.call_seat_em.raw"));
+        boolQuery.filter(QueryBuilders.existsQuery("cf.call_seat_em.raw"));
         boolQuery.filter(QueryBuilders.termsQuery("cf.call_seat_em.raw",aa.split(",")));
         boolQuery.filter(QueryBuilders.rangeQuery("cf.payment_time").gte("2018-08-01 00:00:00").lte("2018-08-31 23:59:59"));
         boolQuery.filter(QueryBuilders.termsQuery("cf.status_code.raw", STATUS_CODE));

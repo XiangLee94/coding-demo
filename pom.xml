@@ -20,11 +20,12 @@
         <module>thread-demo</module>
         <module>javacode-demo</module>
         <module>mybatis-demo</module>
-        <module>canal2mysql</module>
         <module>prometheus</module>
         <module>kafka-demo</module>
         <module>hbase-demo</module>
         <module>jvm-demo</module>
+        <module>mongo-demo</module>
+        <module>scala-demo</module>
     </modules>
 
 
