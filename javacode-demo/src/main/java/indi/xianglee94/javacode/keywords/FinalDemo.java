@@ -14,8 +14,8 @@ public class FinalDemo {
         String d = b+"world";
         String e = c+"world";
 
-        System.out.println(a==aa);//false
-        System.out.println(a==d);//false
-        System.out.println(a==e);//false
+        System.out.println(a==aa);//
+        System.out.println(a==d);//
+        System.out.println(a==e);//f
     }
 }
