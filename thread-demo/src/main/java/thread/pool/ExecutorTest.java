@@ -1,4 +1,4 @@
-package thread;
+package thread.pool;
 
 import javax.annotation.Resource;
 import java.util.concurrent.ExecutorService;
