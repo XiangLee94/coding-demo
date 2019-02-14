@@ -17,6 +17,6 @@ object Test {
   }
 
   def main(args: Array[String]): Unit = {
-    print(hashRowKeyGenerator(4, "", ""))
+    print(hashRowKeyGenerator(4, "5144802", "finance"))
   }
 }

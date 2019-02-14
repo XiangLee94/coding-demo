@@ -10,6 +10,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ProducerDemo {
 
+    private static long failcount = 0;
+
 
     Properties properties ;
     private String server;
@@ -39,6 +41,7 @@ public class ProducerDemo {
         properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, server);
         properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
         properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
+        properties.setProperty(ProducerConfig.BUFFER_MEMORY_CONFIG,"16384");
         /**2.创建生产者
          * 发送消息的三种方式:
          * ①fire-and-forget 发送并忘记,会自动尝试重发,有时候会丢消息
@@ -71,7 +74,11 @@ public class ProducerDemo {
     //异步发送消息,好处是可以不需要等待网络的延迟
     public void sendAndAsycCallBack(String topic , String keyForPartion, String message){
         ProducerRecord<String, String> producerRecord = new ProducerRecord<>(topic, keyForPartion, message);
-        kafkaProducer.send(producerRecord,new MyCallback("topic1","key1","fhjkdsahfihdasiugfduysaghjfdgask"));
+        kafkaProducer.send(producerRecord,new MyCallback(topic,keyForPartion,message));
+    }
+
+    private synchronized void reBuildProducer(){
+        createProducer(server);
     }
 
     public void close(){
@@ -95,7 +102,9 @@ public class ProducerDemo {
         @Override
         public void onCompletion(RecordMetadata recordMetadata, Exception e) {
             if ( !(e == null)){
-                System.out.println("SEND FAIL"+topic+"|"+key+"|"+message);
+                ProducerRecord<String, String> producerRecord = new ProducerRecord<>(topic, key, message);
+                System.out.println("send fail");
+//                kafkaProducer.send(producerRecord,new MyCallback(topic,key,message));
             }
         }
     }
