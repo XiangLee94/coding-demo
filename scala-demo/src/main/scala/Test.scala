@@ -1,5 +1,7 @@
 import org.apache.hadoop.hbase.util.{Bytes, MD5Hash}
 
+import scala.collection.mutable.ListBuffer
+
 object Test {
   val ROWKEY_SIZE_LIMIT = 1024 * 4
   def hashRowKeyGenerator(md5Length: Int, inId: String, sys_code: String): String = {
@@ -17,6 +19,16 @@ object Test {
   }
 
   def main(args: Array[String]): Unit = {
-    print(hashRowKeyGenerator(4, "5144802", "finance"))
+   val a = new ListBuffer[String]
+    a+=("1")
+    a+=("2")
+    a+=("3")
+    a+=("4")
+    val list = a.toList
+
+
+    list.toIterator.foreach(println)
+
+    list.foreach(println)
   }
 }

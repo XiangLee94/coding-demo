@@ -11,7 +11,6 @@
     <modules>
         <module>zookeeper-demo</module>
         <module>elasticsearch-demo</module>
-        <module>spring-boot-demo</module>
         <module>spark-demo</module>
         <module>tools-demo</module>
         <module>mapreduce-demo</module>
@@ -27,6 +26,7 @@
         <module>mongo-demo</module>
         <module>scala-demo</module>
         <module>springboot-demo</module>
+        <module>jdbc-demo</module>
     </modules>
 
 

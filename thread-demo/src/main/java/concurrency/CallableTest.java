@@ -36,8 +36,8 @@ public class CallableTest {
         TaskResult taskResult = new TaskResult();
         Callable<TaskResult> getData1 = new CallableData1();
         Callable<TaskResult> getData2 = new CallableData2();
-        FutureTask<TaskResult> data1 = new FutureTask<TaskResult>(getData1);
-        FutureTask<TaskResult> data2 = new FutureTask<TaskResult>(getData2);
+        FutureTask<TaskResult> data1 = new FutureTask<>(getData1);
+        FutureTask<TaskResult> data2 = new FutureTask<>(getData2);
         executorPool.submit(data1);
         executorPool.submit(data2);
         data1.cancel(true);

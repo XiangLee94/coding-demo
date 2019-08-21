@@ -12,7 +12,7 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat
 import scala.reflect.ClassTag
 
 
-object KafkaSampleMain {
+object HDFSSampleMain {
 
   val checkpointDirectory = "hdfs://192.168.0.80:9000/test_app_log/checkpoint"
 

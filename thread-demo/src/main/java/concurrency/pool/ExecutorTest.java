@@ -1,5 +1,6 @@
 package concurrency.pool;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -79,4 +80,22 @@ public class ExecutorTest {
         }, 1, 3, TimeUnit.SECONDS);
     }
 
+}
+
+class MyThread implements Runnable{
+
+    private List<String> names;
+
+    @Override
+    public void run() {
+
+    }
+
+    public List<String> getNames() {
+        return names;
+    }
+
+    public void setNames(List<String> names) {
+        this.names = names;
+    }
 }
