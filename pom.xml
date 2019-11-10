@@ -25,12 +25,9 @@
         <module>jvm-demo</module>
         <module>mongo-demo</module>
         <module>scala-demo</module>
-<<<<<<< HEAD
         <module>spring-demo</module>
-=======
         <module>springboot-demo</module>
         <module>jdbc-demo</module>
->>>>>>> refs/remotes/origin/master
     </modules>
 
 
