@@ -26,6 +26,7 @@
         <module>jvm-demo</module>
         <module>mongo-demo</module>
         <module>scala-demo</module>
+        <module>spring-demo</module>
     </modules>
 
 
