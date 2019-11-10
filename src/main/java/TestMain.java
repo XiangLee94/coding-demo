@@ -9,13 +9,10 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.TemporalAdjusters;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class TestMain {
-    private Integer a = null;
+    private Integer a = 0;
 
     public Integer getA() {
         return a;
@@ -25,15 +22,19 @@ public class TestMain {
         this.a = a;
     }
 
+    int anInt;
+    private static Comparator<TestMain> idComparator1 = (t1, t2) -> t1.getA() - t2.getA();
+    static  Queue<TestMain> jobQueue = new PriorityQueue<>(idComparator1);
     public static void main(String[] args) {
-        long st2 = System.currentTimeMillis();
-        String source = "t_action_info_20180701";
-        String regex = "t_action_info_201807";
-        String replacement = "t_action_info";
-        String target = source.replaceFirst(regex,replacement);
-        System.out.println(target);
-
-        long st3 = System.currentTimeMillis();
+        TestMain testMain = new TestMain();
+        TestMain testMain1 = new TestMain();
+        jobQueue.add(testMain);
+        jobQueue.add(testMain1);
+        TestMain t = jobQueue.poll();
+        t.setA(-2);
+        jobQueue.add(t);
+        TestMain t2 = jobQueue.poll();
+        System.out.println(t2.getA());
 
     }
 
