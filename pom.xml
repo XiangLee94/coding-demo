@@ -53,7 +53,7 @@
         <spring.version>4.3.16.RELEASE</spring.version>
         <mybatis.version>3.2.3</mybatis.version>
         <mybatis.spring.version>1.2.1</mybatis.spring.version>
-        <mysql-connector-java.version>5.1.28</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
         <atomikos.version>3.9.0</atomikos.version>
         <jta.version>1.1</jta.version>
         <spring-boot.version>1.5.12.RELEASE</spring-boot.version>
