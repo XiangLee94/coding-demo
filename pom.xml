@@ -43,7 +43,7 @@
         <commons-pool2.version>2.0</commons-pool2.version>
         <spring.version>4.3.14.RELEASE</spring.version>
         <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
-        <elasticsearch.version>5.3.2</elasticsearch.version>
+        <elasticsearch.version>7.11.2</elasticsearch.version>
         <snakeyaml.version>1.17</snakeyaml.version>
         <spark.version>2.1.0</spark.version>
         <scala.version>2.11</scala.version>
