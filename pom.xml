@@ -44,7 +44,7 @@
         <spring.version>4.3.14.RELEASE</spring.version>
         <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
         <elasticsearch.version>5.3.2</elasticsearch.version>
-        <snakeyaml.version>1.17</snakeyaml.version>
+        <snakeyaml.version>1.26</snakeyaml.version>
         <spark.version>2.1.0</spark.version>
         <scala.version>2.11</scala.version>
         <json4s.version>3.2.11</json4s.version>
